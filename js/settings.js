@@ -1,0 +1,11 @@
+shell('settings','Settings');
+const a=DB.g('admin',{}),co=DB.g('company',{});
+$('#content').innerHTML=`<div class="row g-3"><div class="col-lg-6"><div class="card p-4"><h6>Admin Profile</h6><form id="pf"><input id="an" class="form-control mb-2" value="${a.name}" placeholder="Name" required><input id="ae" type="email" class="form-control mb-2" value="${a.email}" required><button class="btn btn-primary">Update Profile</button></form></div></div>
+<div class="col-lg-6"><div class="card p-4"><h6>Change Password</h6><form id="pw"><input id="op" type="password" class="form-control mb-2" placeholder="Current password" required><input id="np" type="password" class="form-control mb-2" placeholder="New password (min 6)" minlength="6" required><button class="btn btn-primary">Change Password</button></form></div></div>
+<div class="col-lg-6"><div class="card p-4"><h6>Company Details</h6><form id="cf"><input id="cn" class="form-control mb-2" value="${co.name}" required><input id="cm" type="email" class="form-control mb-2" value="${co.email}"><input id="ca" class="form-control mb-2" value="${co.address}"><button class="btn btn-primary">Save Company</button></form></div></div>
+<div class="col-lg-6"><div class="card p-4"><h6>System</h6><p class="small text-secondary">Data lives in your browser's LocalStorage (demo only – not secure, not multi-user).</p><button id="rs" class="btn btn-danger me-2">Reset Demo Data</button><button id="lg" class="btn btn-outline-secondary">Logout</button></div></div></div>`;
+$('#pf').onsubmit=e=>{e.preventDefault();DB.s('admin',{...a,name:$('#an').value,email:$('#ae').value});toast('Profile updated');setTimeout(()=>location.reload(),900)};
+$('#pw').onsubmit=e=>{e.preventDefault();if($('#op').value!==a.password)return toast('Current password is wrong','error');DB.s('admin',{...a,password:$('#np').value});e.target.reset();toast('Password changed')};
+$('#cf').onsubmit=e=>{e.preventDefault();DB.s('company',{name:$('#cn').value,email:$('#cm').value,address:$('#ca').value});toast('Company saved')};
+$('#rs').onclick=async()=>{if((await Swal.fire({title:'Reset all data?',icon:'warning',showCancelButton:true})).isConfirmed){seed(true);location.reload()}};
+$('#lg').onclick=()=>$('#lo').click();

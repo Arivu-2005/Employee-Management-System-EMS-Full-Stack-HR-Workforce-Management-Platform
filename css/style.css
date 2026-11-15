@@ -1,0 +1,14 @@
+:root{--side:#111827;--pri:#2563EB;--sec:#64748B;--ok:#10B981;--bg:#F8FAFC;--txt:#1E293B}
+body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,sans-serif}
+.btn-primary{background:var(--pri);border-color:var(--pri)}
+.sidebar{--bs-offcanvas-bg:var(--side);--bs-offcanvas-width:250px;background:var(--side);color:#cbd5e1}
+.brand{font-size:1.3rem;font-weight:700;color:#fff;padding:20px 24px}
+.sidebar nav a{display:flex;gap:12px;align-items:center;color:#cbd5e1;text-decoration:none;padding:12px 24px;margin:2px 12px;border-radius:10px;transition:.2s}
+.sidebar nav a:hover{background:#1f2937;color:#fff}.sidebar nav a.active{background:var(--pri);color:#fff}
+.topbar{display:flex;align-items:center;gap:12px;padding:12px 24px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.08);position:sticky;top:0;z-index:5}
+.card{border:0;border-radius:16px;box-shadow:0 2px 10px rgba(15,23,42,.06)}
+.stat{display:flex;flex-direction:row;align-items:center;gap:16px;padding:20px}.stat .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:1.5rem}
+.stat h3{margin:0;font-weight:700}.table th{color:var(--sec);font-size:.8rem;text-transform:uppercase}
+.av{width:36px;height:36px;border-radius:50%;background:var(--pri);color:#fff;display:inline-grid;place-items:center;font-weight:600;margin-right:10px}
+.login{min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,#111827,#2563EB)}
+.login .card{width:100%;max-width:420px;padding:32px}
